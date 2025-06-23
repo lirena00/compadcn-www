@@ -16,10 +16,14 @@ export default function Documentation() {
       <nav className="relative z-50 px-8 py-6 flex justify-between items-center max-w-7xl mx-auto backdrop-blur-sm">
         <Link
           href="/"
-          className="text-3xl font-black tracking-tighter relative"
+          className="flex items-center text-3xl font-medium tracking-tighter relative"
         >
+          <img
+            src="/icon_transparent.svg"
+            alt="compadcn logo"
+            className="w-14 h-14"
+          />
           compadcn
-          <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-black to-transparent"></div>
         </Link>
         <div className="hidden md:flex gap-8 text-sm font-medium">
           <Link
@@ -280,20 +284,26 @@ export default function Documentation() {
       <footer className="px-8 py-20 border-t-4 border-black/20 bg-gradient-to-t from-gray-100 to-transparent">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
-            <div className="text-center lg:text-left">
-              <div className="text-3xl font-black mb-3 tracking-tight">
+            <div className="text-center">
+              <div className="flex items-center justify-center text-3xl font-medium tracking-tighter relative">
+                <img
+                  src="/icon_transparent.svg"
+                  alt="compadcn logo"
+                  className="w-14 h-14"
+                />
                 compadcn
               </div>
+
               <p className="text-gray-600 font-medium text-base">
                 Built with ❤️ by{" "}
-                <a
-                  href="https://github.com/lirena00"
+                <Link
+                  href="https://www.lirena.in/?utm_source=compadcn&utm_medium=website"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline hover:no-underline transition-all hover:text-black font-semibold"
                 >
                   @lirena00
-                </a>
+                </Link>
               </p>
             </div>
             <div className="flex gap-10 text-base font-medium">
