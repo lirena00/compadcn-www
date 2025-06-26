@@ -80,15 +80,47 @@ export default function Home() {
               with powered-up cli
             </span>
           </h1>
-          <p className="text-2xl md:text-3xl mb-20 text-gray-700 max-w-5xl mx-auto leading-relaxed font-light">
+          <p className="text-2xl md:text-3xl mb-12 text-gray-700 max-w-5xl mx-auto leading-relaxed font-light">
             The most <em className="font-semibold not-italic">powerful</em> CLI
             wrapper around shadcn-ui.
             <br className="hidden md:block" />
             Interactive TUI, smart linting, custom presets, and effortless
             component management.
           </p>
-        </div>
 
+          {/* Featured badges section */}
+          <div className="flex flex-col md:flex-row gap-6 items-center justify-center mb-20">
+            {/* Peerlist Launch */}
+            <a
+              href="https://peerlist.io/lirena00/project/compadcn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white border-green-400 border px-5 py-1 rounded-xl group hover:scale-102 transition-transform duration-300"
+            >
+              <img
+                src="/peerlist.svg"
+                alt="Launched on Peerlist"
+                className="h-12 md:h-14 w-auto group-hover:brightness-110 transition-all duration-300"
+              />
+            </a>
+
+            {/* Product Hunt */}
+            <a
+              href="https://www.producthunt.com/products/compadcn?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-compadcn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group hover:scale-102 transition-transform duration-300"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=982495&theme=light&t=1750941875775"
+                alt="Compadcn - Speedrun the shadcn setup with powered-up cli | Product Hunt"
+                className="h-12 md:h-16 w-auto group-hover:brightness-110 transition-all duration-300"
+                width="250"
+                height="54"
+              />
+            </a>
+          </div>
+        </div>
         {/* Terminal mockup with enhanced design */}
         <div className="mb-20 max-w-4xl mx-auto relative group">
           <div className="absolute -inset-4 bg-gradient-to-r from-black/20 via-gray-500/20 to-black/20 blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
