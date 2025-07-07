@@ -16,6 +16,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "compadcn - Charge up ShadCN CLI like never before",
+  icons: {
+    icon: "/icon.svg",
+  },
   description:
     "A powerful CLI wrapper around shadcn-ui that adds presets, remove support, linting, and an interactive TUI for blazing-fast component workflows.",
   authors: [
