@@ -85,12 +85,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${jetbrainsMono.variable} antialiased`}>
         {children}
-        <Script
-          defer
-          src="https://analytics.lirena.in/script.js"
-          data-website-id="d87cbb12-c15e-46ac-b287-50c060b96c5b"
-          strategy="afterInteractive"
-        />
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            defer
+            src="https://analytics.lirena.in/script.js"
+            data-website-id="d87cbb12-c15e-46ac-b287-50c060b96c5b"
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );
