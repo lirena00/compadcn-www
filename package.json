@@ -6,23 +6,34 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "postinstall": "fumadocs-mdx",
+    "typecheck": "fumadocs-mdx && tsc --noEmit",
+    "check:docs": "node scripts/check-docs.mjs"
   },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "pnpm@10.13.1",
   "dependencies": {
+    "fumadocs-core": "16.19.0",
+    "fumadocs-mdx": "15.6.1",
+    "fumadocs-ui": "16.19.0",
     "lucide-react": "^0.522.0",
-    "next": "15.3.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "next": "16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/mdx": "2.0.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.3.4",
-    "tailwindcss": "^4",
+    "eslint-config-next": "16.4.6",
+    "tailwindcss": "^4.3.5",
     "typescript": "^5"
   }
 }

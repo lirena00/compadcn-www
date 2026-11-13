@@ -1,0 +1,14 @@
+---
+title: collection list
+description: List collection JSON files in one directory.
+---
+
+```npm
+npx shadcn-plus@latest collection list collections
+```
+
+The directory defaults to `collections` when omitted. List reads one directory without scanning a project or contacting registries.
+
+Use `--json` for structured output under `data.collections`. Invalid collection files produce `COLLECTION_LIST_INCOMPLETE` instead of being silently skipped.
+
+Next: [show a collection](/documentation/commands/collection/show) or [create a new one](/documentation/commands/collection/create).

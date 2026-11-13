@@ -1,0 +1,35 @@
+---
+title: apply
+description: Apply a reviewed cleanup plan with backups and required checks.
+---
+
+```npm
+npx shadcn-plus@latest apply --plan .shadcn-plus/plans/cleanup.json --precheck
+```
+
+First [create and review a plan](/documentation/commands/plan). Apply revalidates it, backs up every target before deletion, removes only listed files, and runs configured verification scripts.
+
+| Option | Purpose |
+| --- | --- |
+| `--plan <path>` | Select the reviewed, ready plan. Required. |
+| `--precheck` | Run the plan's checks before deletion too. |
+| `--yes` | Accept the reviewed plan without a prompt; required in scripts. |
+| `--verification-timeout <ms>` | Timeout per script; default `120000`. |
+| `--cwd <app>` | Use the same package selected during planning. |
+
+Configured checks always run; `--verify` does not enable a bypass. If no checks were configured, completion is not evidence of a verified build. Include required scripts when planning.
+
+## Recovery and limits
+
+Failed checks, changed inputs, or interruptions trigger recovery when safe. Read the returned operation ID with [operation](/documentation/commands/operation); use [restore](/documentation/commands/restore) for missing files or a `recovery-required` receipt.
+
+Existing conflicting replacements are preserved. Verification scripts can affect files outside the deletion set; those effects are not rolled back. Apply does not rewrite imports, uninstall packages, or change lockfiles.
+
+Ignore local plans, backups, and locks:
+
+```text title=".gitignore"
+.shadcn-plus/operations/
+.shadcn-plus/plans/
+.shadcn-plus/cleanup.lock
+.shadcn-plus/cleanup-recovery.lock
+```

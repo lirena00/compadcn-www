@@ -1,0 +1,22 @@
+---
+title: restore
+description: Recover an operation's missing files while preserving conflicting replacements.
+---
+
+```npm
+npx shadcn-plus@latest restore OPERATION_ID
+```
+
+Replace `OPERATION_ID` with the ID returned by apply.
+
+Restore uses checked backups from `.shadcn-plus/operations/<id>`. It recreates missing files, accepts unchanged recovered files, and reports conflicting replacements without overwriting them. It does not need registry access or healthy current project configuration.
+
+| Option | Purpose |
+| --- | --- |
+| `--cwd <app>` | Select the original package. |
+| `--yes` | Recover without a prompt; required outside a terminal. |
+| `--recover-lock` | Recover this operation's lock only if its same-host owner process has stopped. |
+
+Inspect [operation](/documentation/commands/operation) first. Live, foreign-host, malformed, or reused-process locks require inspection. If verification shutdown was unconfirmed, stop those processes before restoring.
+
+For conflicts, compare current files with the backups and decide which content to keep before retrying. Keep the operation directory until recovery is finished.

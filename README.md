@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# shadcn-plus website
 
-## Getting Started
+The existing landing page and v2 documentation for [shadcn-plus](https://github.com/lirena00/compadcn). Documentation uses Next.js, Fumadocs UI, and Fumadocs MDX.
 
-First, run the development server:
+## Develop
+
+Requires Node.js 22.12+ and pnpm 10.13.1.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install --frozen-lockfile
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `/documentation`. `/docs` and its subpaths redirect to the same documentation.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Edit documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Write pages in `content/docs/`. Each CLI command and actionable subcommand has its own page under `commands/`.
+- Set a title and a one-sentence description in frontmatter.
+- Add each page or folder to its directory's `meta.json` for sidebar ordering.
+- Keep examples consistent with the CLI implementation. Distinguish source builds from published packages until v2 ships.
 
-## Learn More
+Use the [Fumadocs components](https://www.fumadocs.dev/docs/ui/components) registered in `src/components/mdx.tsx`: Steps for sequences, Tabs for alternatives, Callouts for caveats, Accordions for troubleshooting, Files for directory structure, and Cards for navigation. Code blocks get highlighting and copy controls automatically. Use ordinary tables for command and option references.
 
-To learn more about Next.js, take a look at the following resources:
+Write executable CLI examples in an `npm` code fence, starting with `npx shadcn-plus@latest`. Fumadocs generates npm, pnpm, Yarn, and Bun tabs with synchronized, persistent selection. Use an exact CLI version in CI examples. Keep source-build setup in ordinary shell fences.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The source adapter is `src/lib/source.ts`; `/api/search` indexes its pages. The documentation layout loads its provider and styles. `.source` is generated and must not be committed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Validate
 
-## Deploy on Vercel
+```bash
+pnpm check:docs
+pnpm typecheck
+pnpm build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The content check validates sidebar coverage, page metadata, and internal documentation links. Review desktop/mobile navigation, search, tabs, accordions, code copying, and both themes when changing the interface.

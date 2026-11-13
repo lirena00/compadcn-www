@@ -1,0 +1,16 @@
+---
+title: operation
+description: Inspect a saved cleanup or recovery receipt without changing files.
+---
+
+```npm
+npx shadcn-plus@latest operation OPERATION_ID
+```
+
+Replace `OPERATION_ID` with the ID returned by [apply](/documentation/commands/apply) or restore. The receipt reports planned and attempted deletions, recovered paths, conflicts, and verification outcomes.
+
+Use `--cwd` for the original package and `--json` for structured output. Inspection does not fetch registries, run scripts, or acquire a mutation lock.
+
+An `interrupted` receipt means no terminal journal record was written; its owner might still be running. Inspect active processes before recovery.
+
+Next: [restore missing files](/documentation/commands/restore), if needed.

@@ -1,0 +1,61 @@
+---
+title: Troubleshooting
+description: Resolve configuration, coverage, cleanup, and installation issues.
+---
+
+Start with `shadcn-plus doctor --cwd <app-directory>`. Then rerun the command that failed; JSON output includes a stable error code and available diagnostic details.
+
+<Accordions type="multiple">
+<Accordion title="The project is not ready">
+
+Run `doctor` inside the application package, or pass `--cwd ./apps/web`. Check `components.json`, your TS/JS path aliases, and reported destinations. A workspace root does not select an application automatically.
+
+</Accordion>
+<Accordion title="A private registry is missing or unavailable">
+
+Check that its namespace is configured in the selected package and required environment variables are set. The CLI does not load `.env`. Try `inventory --refresh`; for a source without a catalog, use `--item @private/known-item`. Offline mode cannot fetch missing metadata.
+
+</Accordion>
+<Accordion title="Audit is incomplete or a result is unknown">
+
+Inspect the diagnostics. Custom config wrappers or entry layouts may need explicit `--entry` patterns. Include every runtime root in each overridden scope. Unsupported formats and unresolved references must be addressed before cleanup; an unknown result is retained.
+
+</Accordion>
+<Accordion title="An unused component will not enter a cleanup plan">
+
+Run `why <reference>`. Check the reviewed ownership mapping and retention reasons: shared files, registry dependents, development use, public exports, partial items, or incomplete coverage can block deletion. `--include-unverified` and `--include-modified` apply only to named `plan remove` targets and do not waive these protections.
+
+</Accordion>
+<Accordion title="The plan is stale or the output file already exists">
+
+Use the same workspace location, tool version, and `--cwd`. If inputs changed, create and review a new plan. Artifact creation does not overwrite files: use a new `--out` filename rather than redirecting JSON stdout into an existing plan.
+
+</Accordion>
+<Accordion title="Apply failed verification">
+
+Inspect `operation <id>` for the check and recovery status. Run the failed package script directly to see its logs. Verification scripts can affect files outside the deletion set; those effects are not backed up. If the receipt says `recovery-required`, inspect conflicts and remaining processes before restoring.
+
+</Accordion>
+<Accordion title="A cleanup lock remains after an interruption">
+
+Inspect the owning operation and confirm its verification processes have stopped. `restore <id> --recover-lock` can recover only a matching same-host lock whose owning process is provably stopped. Live, foreign-host, or malformed locks require inspection.
+
+</Accordion>
+<Accordion title="Restore reports a conflict">
+
+Restore preserves existing replacements. Compare the current file with the operation backup and decide which content to keep before retrying. Keep `.shadcn-plus/operations/<id>` until recovery is finished.
+
+</Accordion>
+<Accordion title="Add failed or files are missing after installation">
+
+`INSTALL_FAILED` means the upstream installer failed. `INSTALL_VERIFICATION_FAILED` means selected destination files were still missing after it exited successfully. Inspect your project and run its checks before retrying. Add does not roll back installer changes.
+
+</Accordion>
+<Accordion title="A command needs an interactive terminal">
+
+For scripts, provide explicit component addresses and `--yes` to add. Apply, restore, and collection install also require `--yes` outside a terminal. Legacy preset workflows have limited automation support; migrate to collections.
+
+</Accordion>
+</Accordions>
+
+Still blocked? [Open an issue](https://github.com/lirena00/compadcn/issues) with the tool version, command, framework, and relevant diagnostics. Remove credentials and private source content before sharing.

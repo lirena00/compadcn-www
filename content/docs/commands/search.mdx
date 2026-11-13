@@ -1,0 +1,28 @@
+---
+title: search
+description: Find components in configured catalogs without installing anything.
+---
+
+```npm
+npx shadcn-plus@latest search dialog
+```
+
+Search matches addresses, names, descriptions, types, and observed local presence. Qualified names keep different registries distinct.
+
+## Narrow the results
+
+```npm
+npx shadcn-plus@latest search menu --registry @company --type ui
+```
+
+| Option | Purpose |
+| --- | --- |
+| `--presence present` | Show items whose expected files are present locally. |
+| `--workspace` | Include all configured workspace packages. |
+| `--limit <1-1000>` | Limit results; default `50`. |
+| `--item @private/name` | Include a known item from a catalog-less source. |
+| `--offline` / `--refresh` | Use cached metadata or revalidate it. |
+
+File presence does not prove installation history. A failed source leaves healthy results visible but returns exit `2` with incomplete coverage.
+
+Next: [add components](/documentation/commands/add). Configure sources in [registries](/documentation/registries).

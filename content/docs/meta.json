@@ -1,0 +1,13 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "---Start here---",
+    "index",
+    "quick-start",
+    "commands",
+    "---Reference---",
+    "registries",
+    "migration",
+    "troubleshooting"
+  ]
+}

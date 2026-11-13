@@ -1,0 +1,26 @@
+---
+title: graph
+description: Inspect component, file, and package dependency relationships.
+---
+
+```npm
+npx shadcn-plus@latest graph
+```
+
+Graph includes cross-registry dependencies, source references, reverse dependents, and cycles. It does not install or remove components.
+
+## Focus on one component
+
+```npm
+npx shadcn-plus@latest graph --focus @shadcn/button --reverse --transitive
+```
+
+| Option | Purpose |
+| --- | --- |
+| `--focus <reference>` | Select an address, path, label, or node ID. |
+| `--reverse` | Follow dependents instead of dependencies. |
+| `--transitive` | Follow the full dependency or dependent closure. |
+| `--mermaid` | Export Mermaid text. |
+| `--json` | Return the structured graph. |
+
+Unresolved references and unsupported inputs stay visible as incomplete coverage. Use [audit](/documentation/commands/audit) to classify usage and [why](/documentation/commands/why) for a focused explanation.

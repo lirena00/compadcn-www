@@ -1,0 +1,77 @@
+---
+title: Registries
+description: Use official, custom, and private sources through one workflow.
+---
+
+shadcn-plus reads your project's registry configuration. Custom and private sources participate in search, inventory, usage analysis, explanations, and cleanup using the same rules as official components.
+
+## Configure a source
+
+Add your registry to `components.json`. This example uses a placeholder URL:
+
+```json title="components.json · registry excerpt"
+{
+  "registries": {
+    "@company": "https://registry.example.com/r/{name}.json",
+    "@private": {
+      "url": "https://private.example.com/r/{name}.json",
+      "headers": {
+        "Authorization": "Bearer ${REGISTRY_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+Replace the URLs with your compatible shadcn registry endpoints. `components.json` entries override same-package `package.json` registry entries. Parent package configurations are not merged.
+
+## Private authentication
+
+Set credentials in the environment of the process running the CLI:
+
+<Tabs items={['macOS / Linux', 'PowerShell']}>
+<Tab value="macOS / Linux">
+
+```bash
+export REGISTRY_TOKEN='your-token'
+```
+
+</Tab>
+<Tab value="PowerShell">
+
+```powershell
+$env:REGISTRY_TOKEN = 'your-token'
+```
+
+</Tab>
+</Tabs>
+
+Then run:
+
+```npm
+npx shadcn-plus@latest search --registry @private
+```
+
+The CLI does not load `.env` files. In CI, provide credentials through your secret environment variables. Missing credentials produce incomplete coverage.
+
+## Sources without a catalog
+
+Use a known address when a registry cannot list its items:
+
+```npm
+npx shadcn-plus@latest inventory --item @private/dashboard
+npx shadcn-plus@latest add @private/dashboard
+```
+
+## Cache and workspaces
+
+| Option | Use it to |
+| --- | --- |
+| `--refresh` | Revalidate cached registry metadata. |
+| `--offline` | Read cached metadata without network requests, on supported read and planning commands. |
+| `--no-cache` | Disable persistent metadata caching. |
+| `--cache-dir <path>` | Choose a metadata cache directory. |
+| `--workspace` | Include all configured workspace packages in inventory or search. |
+| `--cwd <path>` | Select the package whose registry bindings apply. |
+
+Metadata is cached for five minutes. Authenticated caches are isolated by credentials and package scope. Offline mode needs usable cached metadata; it cannot fill missing coverage.

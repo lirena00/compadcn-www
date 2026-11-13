@@ -1,0 +1,23 @@
+---
+title: plan prune
+description: Propose cleanup of unused, unchanged items with reviewed ownership.
+---
+
+```npm
+npx shadcn-plus@latest plan prune --ownership .shadcn-plus/ownership.json --verify-script build --out .shadcn-plus/plans/cleanup.json
+```
+
+First create and review an [ownership snapshot](/documentation/commands/plan/snapshot). Prune includes only wholly unused, unchanged, mapped items with complete analysis. Source files are not deleted.
+
+| Option | Purpose |
+| --- | --- |
+| `--ownership <path>` | Accept a reviewed ownership baseline. |
+| `--verify-script <name>` | Require a real package script during apply; repeatable. |
+| `--out <new.json>` | Save the complete plan to a new file. |
+| `--summary` | Omit diffs from the response; the saved plan stays complete. |
+
+This example requires a `build` script. Choose checks that exist in your application.
+
+Open the saved plan and inspect every path, diff, and retention reason. Shared resources, public contracts, live/development usage, and uncertain ownership remain protected. A blocked plan contains no executable deletions and exits `2`.
+
+Next: [check the plan](/documentation/commands/plan/check), then [apply it](/documentation/commands/apply).

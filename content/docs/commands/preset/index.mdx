@@ -1,0 +1,16 @@
+---
+title: preset
+description: Legacy preset compatibility. Use collections for new v2 workflows.
+---
+
+Preset commands retain the v1 installation flow. They do not support `--json` or `--plain`; mutating workflows require an interactive terminal.
+
+| Command | Purpose |
+| --- | --- |
+| [preset list](/documentation/commands/preset/list) | List available presets. |
+| [preset show](/documentation/commands/preset/show) | Inspect a preset. |
+| [preset install](/documentation/commands/preset/install) | Install through the legacy runner. |
+| [preset create](/documentation/commands/preset/create) | Save a legacy custom preset. |
+| [preset delete](/documentation/commands/preset/delete) | Delete a custom preset record. |
+
+Prefer [collections](/documentation/commands/collection) for configured multi-registry installation. Existing custom presets can be [migrated explicitly](/documentation/commands/collection/migrate).

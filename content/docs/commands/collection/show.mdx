@@ -1,0 +1,14 @@
+---
+title: collection show
+description: Read one collection without scanning a project or contacting registries.
+---
+
+```npm
+npx shadcn-plus@latest collection show collections/dashboard.json
+```
+
+The result contains the collection's version, name, description, and qualified item addresses. It does not report installed status.
+
+Use `--json` for structured output under `data.collection`. Paths are relative to your invoking directory.
+
+Next: [install this collection](/documentation/commands/collection/install) or [list other files](/documentation/commands/collection/list).

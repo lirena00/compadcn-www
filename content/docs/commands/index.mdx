@@ -1,0 +1,45 @@
+---
+title: Commands
+description: Pick a command. Each page explains one task.
+---
+
+## Find and inspect
+
+| Command | Use it to |
+| --- | --- |
+| [doctor](/documentation/commands/doctor) | Check configuration and aliases. |
+| [search](/documentation/commands/search) | Find available registry components. |
+| [add](/documentation/commands/add) | Install a component selection. |
+| [inventory](/documentation/commands/inventory) | Inspect catalog items and local files. |
+| [audit](/documentation/commands/audit) | Classify usage without changing files. |
+| [why](/documentation/commands/why) | Explain one usage or retention result. |
+| [graph](/documentation/commands/graph) | Trace component, file, and package dependencies. |
+
+## Review and remove
+
+| Command | Use it to |
+| --- | --- |
+| [plan snapshot](/documentation/commands/plan/snapshot) | Propose ownership mappings for review. |
+| [plan prune](/documentation/commands/plan/prune) | Plan cleanup from reviewed ownership. |
+| [plan remove](/documentation/commands/plan/remove) | Plan removal of named unused targets. |
+| [plan check](/documentation/commands/plan/check) | Revalidate a saved plan. |
+| [apply](/documentation/commands/apply) | Apply reviewed deletions with backups and checks. |
+| [operation](/documentation/commands/operation) | Read a cleanup receipt. |
+| [restore](/documentation/commands/restore) | Recover missing files. |
+
+## Share and automate
+
+| Command | Use it to |
+| --- | --- |
+| [collection](/documentation/commands/collection) | Create, inspect, install, or migrate selections. |
+| [check](/documentation/commands/check) | Gate usage findings in CI. |
+| [check baseline](/documentation/commands/check/baseline) | Capture existing findings for review. |
+| [agent skill](/documentation/commands/agent-skill) | Read or install the agent guide. |
+
+## Common flags
+
+`--json` returns one structured response. `--plain` returns readable text. `--no-interactive` disables prompts. `--progress` sends stages to stderr; `--no-progress` hides them.
+
+Use `--cwd <app>` where supported to target a workspace package. Append `--help` to a command for its complete option list. Put output flags before `--help` or `--version`.
+
+Coming from v1? See [remove](/documentation/commands/remove), [preset](/documentation/commands/preset), and [migration](/documentation/migration).

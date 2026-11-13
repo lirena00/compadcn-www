@@ -1,0 +1,22 @@
+---
+title: doctor
+description: Check project configuration before working with components.
+---
+
+Doctor reports your framework, package manager, source paths, workspace packages, and resolved `components.json` aliases. It does not fetch registries or change project files.
+
+```npm
+npx shadcn-plus@latest doctor
+```
+
+## Target an app
+
+```npm
+npx shadcn-plus@latest doctor --cwd ./apps/web
+```
+
+At a workspace root, select the application explicitly. Resolve reported path or configuration errors before continuing.
+
+`--json` returns structured diagnostics. Incomplete discovery exits `2` with `PROJECT_NOT_READY` and partial context under `error.details.context`.
+
+Next: [search for components](/documentation/commands/search) or [add a selection](/documentation/commands/add).

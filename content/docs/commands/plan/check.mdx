@@ -1,0 +1,22 @@
+---
+title: plan check
+description: Revalidate a saved cleanup plan without applying it.
+---
+
+```npm
+npx shadcn-plus@latest plan check .shadcn-plus/plans/cleanup.json
+```
+
+This reruns scope, analysis, ownership, and exact operation checks. It does not delete files or execute project verification scripts.
+
+Use the same tool version, workspace location, and `--cwd` as the plan's creation. Changed source, configuration, manifests, lockfiles, or inherited compiler settings can invalidate it.
+
+| Result | Action |
+| --- | --- |
+| Ready | Review the saved diffs, then apply. |
+| `PLAN_STALE` | Create and review a new plan with a new output filename. |
+| Incomplete coverage | Fix the reported diagnostics before continuing. |
+
+`--offline` requires usable cached metadata. `--json` returns structured results. Apply performs its own fresh revalidation too.
+
+Next: [apply the plan](/documentation/commands/apply).

@@ -1,0 +1,20 @@
+---
+title: collection install
+description: Install a collection into one configured application.
+---
+
+```npm
+npx shadcn-plus@latest collection install collections/dashboard.json --cwd ./apps/web
+```
+
+Installation uses the same workflow as [add](/documentation/commands/add): fresh registry metadata, selection review, upstream installation, and destination-file verification.
+
+| Option | Purpose |
+| --- | --- |
+| `--cwd <app>` | Select the destination application. |
+| `--yes` | Accept without a prompt; required in scripts. |
+| `--overwrite` | Allow replacement of observed local files. |
+
+The collection path is relative to your invoking directory. Recipients need matching registry namespaces and their own credentials. Current registry metadata resolves at installation time.
+
+Installation can change dependencies and shared configuration. It does not use the cleanup backup journal or provide rollback. Preserve local changes before installing.

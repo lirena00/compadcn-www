@@ -1,0 +1,22 @@
+---
+title: why
+description: Explain the usage and retention reasons for one item, file, or package.
+---
+
+```npm
+npx shadcn-plus@latest why @shadcn/button
+```
+
+Why shows a representative import path, direct consumers, and reasons the target must be retained. It uses the same analysis as audit.
+
+## Choose a reference
+
+```npm
+npx shadcn-plus@latest why src/components/ui/button.tsx
+```
+
+You can also pass a related package name or finding ID. Use `--cwd` to select the app and `--json` for structured evidence.
+
+If a name matches several results, use a qualified address, file path, or finding ID. Missing references return `WHY_NOT_FOUND` only with complete coverage; otherwise they return `WHY_UNRESOLVED`.
+
+Next: inspect the [dependency graph](/documentation/commands/graph) or review [cleanup](/documentation/commands/plan).

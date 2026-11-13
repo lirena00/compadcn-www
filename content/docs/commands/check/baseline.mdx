@@ -1,0 +1,24 @@
+---
+title: check baseline
+description: Capture existing findings for explicit review before accepting them in CI.
+---
+
+```npm
+npx shadcn-plus@2.0.0 check baseline --cwd apps/web --policy .shadcn-plus/check-policy.json --out .shadcn-plus/check-baseline.json
+```
+
+Open the new artifact and review its findings, including errors. Capture refuses incomplete coverage and does not overwrite existing files. Use a new filename when preparing an update.
+
+## Use the reviewed baseline
+
+```npm
+npx shadcn-plus@2.0.0 check --cwd apps/web --policy .shadcn-plus/check-policy.json --baseline .shadcn-plus/check-baseline.json --json
+```
+
+Use matching tool versions, policy, entry patterns, analysis limits, and project configuration. Changed bound context needs a newly reviewed artifact. Compatible checkouts can share baselines.
+
+<Callout type="warn" title="Accept findings deliberately">
+Do not regenerate a baseline automatically to make CI pass. It accepts reviewed usage findings; it does not authorize cleanup or hide incomplete coverage.
+</Callout>
+
+Track reviewed policies and baselines in version control. Use [check](/documentation/commands/check) to gate new findings.
