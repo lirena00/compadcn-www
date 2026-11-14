@@ -1,0 +1,44 @@
+---
+title: Coming from v1
+description: Move from compadcn presets to shadcn-plus collections without changing the originals.
+---
+
+V2 renames the package and CLI to **shadcn-plus**. The repository keeps its existing `compadcn` URL.
+
+## Command changes
+
+| V1 | V2 behavior |
+| --- | --- |
+| `compadcn` | Run `shadcn-plus` through your package manager, or use the source build before publication. |
+| `lint` / `l` | Aliases read-only `audit`. |
+| `remove` / `rm` | Requires named targets and previews a removal plan. Apply separately. |
+| `preset` | Retained for compatibility. Use collections for the v2 registry workflow. |
+
+## Import custom presets
+
+Preview the old `~/.compadcn/custom-presets.json` file:
+
+```npm
+npx shadcn-plus@latest collection migrate --cwd ./my-app --json
+```
+
+Resolve reported name collisions with explicit mappings, then write to a **new directory**:
+
+```npm
+npx shadcn-plus@latest collection migrate --cwd ./my-app --map button=@shadcn/button --out migrated-collections
+```
+
+Use `--from <path>` for another legacy file or repeated `--preset <id>` to select records by ID. Map private items with `--map widget=@company/widget`.
+
+## What gets written
+
+<Files>
+  <Folder name="migrated-collections" defaultOpen>
+    <File name="legacy-custom-presets.json.bak" />
+    <File name="<preset-id>-<suffix>.json" />
+  </Folder>
+</Files>
+
+Names and descriptions are preserved. Old copied dependency lists are discarded; installation resolves current registry metadata. The original preset file stays unchanged, and migration never runs automatically.
+
+Share the resulting collection JSON files. Keep the raw legacy backup local. See [collections](/documentation/commands/collection) to install or compose them.

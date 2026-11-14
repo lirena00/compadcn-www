@@ -1,0 +1,31 @@
+---
+title: collection migrate
+description: Preview or export old compadcn custom presets as v2 collections.
+---
+
+```npm
+npx shadcn-plus@latest collection migrate --cwd ./my-app --json
+```
+
+This reads `~/.compadcn/custom-presets.json` only when explicitly invoked. Without `--out`, migration previews the conversion without writing collections or a backup.
+
+## Export reviewed selections
+
+```npm
+npx shadcn-plus@latest collection migrate --cwd ./my-app --map button=@shadcn/button --out migrated-collections
+```
+
+| Option | Purpose |
+| --- | --- |
+| `--from <path>` | Read a specific legacy file. |
+| `--preset <id>` | Select records by ID; repeatable. |
+| `--map old=@namespace/item` | Resolve ambiguous legacy names; repeatable. |
+| `--out <new-directory>` | Write collections and an exact legacy backup. |
+
+Unknown names, incomplete catalogs, or collisions block writing. Names and descriptions are preserved; copied dependency lists are discarded. The original file is never modified.
+
+Share the collection JSON files; keep `legacy-custom-presets.json.bak` local. Next: [install a collection](/documentation/commands/collection/install).
+
+## Example output
+
+<TerminalOutput id="collection-migrate" />

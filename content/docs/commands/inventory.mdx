@@ -1,0 +1,38 @@
+---
+title: inventory
+description: Compare available registry items with files observed in your project.
+---
+
+```npm
+npx shadcn-plus@latest inventory
+```
+
+Inventory reads every configured compatible registry and inspects expected file destinations. Project files stay unchanged. Catalog items remain separate from installed usage findings.
+
+## Read presence
+
+| State | Meaning |
+| --- | --- |
+| `present` | All declared files were found. |
+| `partial` | Part of the expected file set was found. |
+| `absent` | Expected files were not found. |
+| `unknown` | Metadata or path resolution is insufficient. |
+
+<Callout title="Presence does not prove ownership">
+Matching files do not establish which registry installed them. Origins can remain candidate, ambiguous, or unknown. Local edits and installer transformations also affect content comparisons.
+</Callout>
+
+## Other scopes
+
+```npm
+npx shadcn-plus@latest inventory --workspace
+npx shadcn-plus@latest inventory --item @private/dashboard --json
+```
+
+Use `--cwd` to select a package, `--refresh` to revalidate metadata, or `--offline` for cached metadata. Healthy sources remain visible when another fails; incomplete coverage exits `2` with a partial report under `error.details.report`.
+
+## Example output
+
+<TerminalOutput id="inventory" />
+
+Next: [audit usage](/documentation/commands/audit).

@@ -1,0 +1,22 @@
+---
+title: agent skill
+description: Read or explicitly install the bundled guide for coding agents.
+---
+
+```npm
+npx shadcn-plus@latest agent skill
+```
+
+This prints the portable skill without scanning a project or contacting registries. It guides summary-first audits, focused explanations, reviewed plans, and recovery.
+
+## Install for your agent host
+
+```npm
+npx shadcn-plus@latest agent skill --out .agents/skills/shadcn-plus
+```
+
+Choose a directory your host supports. `--out` creates only a new `SKILL.md`; it does not overwrite existing skills, `AGENTS.md`, or editor settings. Use `--json` for structured output.
+
+## Example output
+
+<TerminalOutput id="agent-skill" />

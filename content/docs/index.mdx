@@ -1,0 +1,34 @@
+---
+title: Introduction
+description: Find components, understand their usage, and clean up with a reviewed plan.
+---
+
+**shadcn-plus** is a CLI for managing components from shadcn registries. Search and install components, trace what your app uses, and review exact file changes before removing anything.
+
+Official, custom, and private registries use the same workflow.
+
+<Callout title="New name, same project">
+shadcn-plus is the v2 name of compadcn. V2 is in development. Package-runner examples work after publication; use the source build for now. [Get started](/documentation/quick-start).
+</Callout>
+
+## Start with your task
+
+<Cards>
+  <Card title="Get started" href="/documentation/quick-start" description="Set up the CLI and check your project." />
+  <Card title="Add components" href="/documentation/commands/add" description="Search your registries and install a selection." />
+  <Card title="Understand usage" href="/documentation/commands/audit" description="See what is used and what keeps it in your app." />
+  <Card title="Clean up" href="/documentation/commands/plan" description="Review a plan, apply it, and recover files if needed." />
+</Cards>
+
+## The usual workflow
+
+```npm title="In your application"
+npx shadcn-plus@latest doctor
+npx shadcn-plus@latest add
+npx shadcn-plus@latest audit
+npx shadcn-plus@latest why button
+```
+
+`doctor` checks configuration. `add` opens the component picker. `audit` reports usage without changing project files. `why` explains one result.
+
+An unused finding is a candidate for review. Removing files takes a separate [plan and apply](/documentation/commands/plan) workflow.

@@ -1,0 +1,34 @@
+---
+title: plan
+description: Create reviewable cleanup artifacts before deleting any files.
+---
+
+Planning leaves source files unchanged. Follow the commands in order:
+
+<Steps>
+<Step>
+
+### Review ownership
+
+[plan snapshot](/documentation/commands/plan/snapshot) proposes observed component-to-file mappings. Open and review the saved JSON.
+
+</Step>
+<Step>
+
+### Propose deletions
+
+[plan prune](/documentation/commands/plan/prune) uses reviewed ownership to find eligible unused items. Use [plan remove](/documentation/commands/plan/remove) for named targets.
+
+</Step>
+<Step>
+
+### Review and apply
+
+Read the exact deletion diffs, run [plan check](/documentation/commands/plan/check), then [apply](/documentation/commands/apply) the saved artifact.
+
+</Step>
+</Steps>
+
+<Callout title="Keep the same CLI version">
+Plans bind the tool version, workspace location, package, and analyzed inputs. If `@latest` changes between steps, use the plan's exact version or create and review a new plan.
+</Callout>

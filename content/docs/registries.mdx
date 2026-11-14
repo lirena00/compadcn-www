@@ -1,0 +1,89 @@
+---
+title: Registries
+description: Use official, custom, and private sources through one workflow.
+---
+
+shadcn-plus reads your project's registry configuration. Custom and private sources participate in search, inventory, usage analysis, explanations, and cleanup using the same rules as official components.
+
+## Configure a source
+
+Register public or private sources in `components.json`:
+
+```json title="components.json · registry excerpt"
+{
+  "registries": {
+    "@blobz": "https://blobz.lirena.in/r/{name}.json",
+    "@private": {
+      "url": "https://private.example.com/r/{name}.json",
+      "headers": {
+        "Authorization": "Bearer ${REGISTRY_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+The `@blobz` URL is the real [Blobz registry](https://blobz.lirena.in/docs/components); replace the private example URL with your own endpoint. `components.json` entries override same-package `package.json` registry entries. Parent package configurations are not merged.
+
+```npm
+npx shadcn-plus@latest search avatar --registry @blobz
+```
+
+See the [example project](/documentation/example-project) for captured Blobz search, inventory, usage, and cleanup output.
+
+## Built-in registry overrides
+
+<Callout type="warn" title="Current source-build installation limit">
+The pinned upstream shadcn installer rejects explicit overrides of its built-in registry names. Configured Blobz analysis works, but a fresh install through such an override can return `INSTALL_FAILED`. The demo shows existing-file skips and does not claim that this limitation is resolved.
+</Callout>
+
+## Private authentication
+
+Set credentials in the environment of the process running the CLI:
+
+<Tabs items={['macOS / Linux', 'PowerShell']}>
+<Tab value="macOS / Linux">
+
+```bash
+export REGISTRY_TOKEN='your-token'
+```
+
+</Tab>
+<Tab value="PowerShell">
+
+```powershell
+$env:REGISTRY_TOKEN = 'your-token'
+```
+
+</Tab>
+</Tabs>
+
+Then run:
+
+```npm
+npx shadcn-plus@latest search --registry @private
+```
+
+The CLI does not load `.env` files. In CI, provide credentials through your secret environment variables. Missing credentials produce incomplete coverage.
+
+## Sources without a catalog
+
+Use a known address when a registry cannot list its items:
+
+```npm
+npx shadcn-plus@latest inventory --item @private/dashboard
+npx shadcn-plus@latest add @private/dashboard
+```
+
+## Cache and workspaces
+
+| Option | Use it to |
+| --- | --- |
+| `--refresh` | Revalidate cached registry metadata. |
+| `--offline` | Read cached metadata without network requests, on supported read and planning commands. |
+| `--no-cache` | Disable persistent metadata caching. |
+| `--cache-dir <path>` | Choose a metadata cache directory. |
+| `--workspace` | Include all configured workspace packages in inventory or search. |
+| `--cwd <path>` | Select the package whose registry bindings apply. |
+
+Metadata is cached for five minutes. Authenticated caches are isolated by credentials and package scope. Offline mode needs usable cached metadata; it cannot fill missing coverage.

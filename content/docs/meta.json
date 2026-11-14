@@ -1,0 +1,14 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "---Start here---",
+    "index",
+    "quick-start",
+    "example-project",
+    "commands",
+    "---Reference---",
+    "registries",
+    "migration",
+    "troubleshooting"
+  ]
+}

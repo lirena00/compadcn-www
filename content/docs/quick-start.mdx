@@ -1,0 +1,100 @@
+---
+title: Quick start
+description: Choose your package manager, select your app, and run your first check.
+---
+
+You need **Node.js 22.12+**, a package manager, and an application configured for shadcn with a `components.json` file. Bun's runner also uses Node for this CLI.
+
+<Callout type="warn" title="V2 is not published yet">
+Package-runner examples target this project's future v2 release. The npm name currently resolves to a different project. Use the source build below until this project's package is available.
+</Callout>
+
+<Steps>
+<Step>
+
+## Run without a global install
+
+Choose your package manager. Your choice stays selected across command examples and pages.
+
+```npm
+npx shadcn-plus@latest --version
+```
+
+`@latest` requests the current published release. You do not maintain a global CLI install. The pnpm tab uses `pnpm dlx`; `pnpx` is an alias. The Yarn tab requires modern Yarn (2+).
+
+<Accordions>
+<Accordion title="Use the v2 source build until publication">
+
+Building from source needs **pnpm 10.13.1**:
+
+```bash
+git clone https://github.com/lirena00/compadcn.git
+cd compadcn
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm link --global
+```
+
+If pnpm has no global bin directory, run `pnpm setup`, reopen your terminal, and repeat the link command. Need pnpm? Install it with `npm install --global pnpm@10.13.1`.
+
+For the source build, replace `npx shadcn-plus@latest` (or the runner in your selected tab) with the linked `shadcn-plus` command in the examples below.
+
+</Accordion>
+</Accordions>
+
+</Step>
+<Step>
+
+## Check your application
+
+Open your application's directory, then run:
+
+```npm
+npx shadcn-plus@latest doctor
+```
+
+This checks configuration, paths, and aliases. Resolve reported errors before continuing. In a monorepo, select the app explicitly:
+
+```npm
+npx shadcn-plus@latest doctor --cwd ./apps/web
+```
+
+No `components.json` yet? Follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation), then return here.
+
+</Step>
+<Step>
+
+## Add a component
+
+<Tabs items={['Interactive', 'Explicit selection']}>
+<Tab value="Interactive">
+
+```npm
+npx shadcn-plus@latest add
+```
+
+Type to search, use the arrow keys to move, press **Tab** to select, then **Enter** to review. **Esc** cancels.
+
+</Tab>
+<Tab value="Explicit selection">
+
+```npm
+npx shadcn-plus@latest add button card
+```
+
+Bare names use your app's `@shadcn` registry. Use `@company/component` for another configured registry.
+
+</Tab>
+</Tabs>
+
+</Step>
+</Steps>
+
+## Check what you use
+
+```npm
+npx shadcn-plus@latest audit
+npx shadcn-plus@latest why button
+```
+
+These commands leave project files unchanged. Read [usage results](/documentation/commands/audit) before creating a cleanup plan.

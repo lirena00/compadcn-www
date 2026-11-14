@@ -1,0 +1,36 @@
+---
+title: audit
+description: Find how local components are used without changing project files.
+---
+
+```npm
+npx shadcn-plus@latest audit
+```
+
+Audit follows application imports, development references, registry dependencies, and workspace consumers. It compares the reference graph with two Knip analysis passes.
+
+## Read the result
+
+| State | Meaning |
+| --- | --- |
+| `runtime` | Reachable from an application entry. |
+| `development-only` | Used by development roots or type-only references. |
+| `unused-candidate` | Analysis agrees no use was found, with complete coverage. |
+| `unknown` | Evidence is missing, unsupported, or conflicting. |
+
+Unused candidates still need a [reviewed cleanup plan](/documentation/commands/plan). Shared resources, public exports, and registry dependents can require retention.
+
+## Useful options
+
+```npm
+npx shadcn-plus@latest audit --summary --json
+npx shadcn-plus@latest audit --entry 'src/main.tsx' --dev-entry 'tests/**/*.ts'
+```
+
+`--summary` returns counts, coverage, and diagnostics. Custom configs or layouts may need explicit entries. Patterns are relative to the workspace root, or project root outside a workspace. `--entry` replaces runtime conventions in matching scopes: include **all** their runtime roots. `--dev-entry` adds development roots.
+
+A complete audit exits `0`, even with unused candidates. Incomplete analysis exits `2` and blocks cleanup. `lint` / `l` are aliases. Use [check](/documentation/commands/check) for a CI gate or [why](/documentation/commands/why) to explain one finding.
+
+## Example output
+
+<TerminalOutput id="audit" />

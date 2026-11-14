@@ -1,0 +1,40 @@
+---
+title: check
+description: Gate usage findings in CI without changing project files.
+---
+
+Pin the CLI version in CI for repeatable results. This example targets the upcoming `2.0.0` release:
+
+```npm
+npx shadcn-plus@2.0.0 check --cwd apps/web --json
+```
+
+Check runs the shared workspace audit against your policy. It does not delete files or run project verification scripts.
+
+## Default policy
+
+```json title=".shadcn-plus/check-policy.json"
+{
+  "policyVersion": 1,
+  "rules": {
+    "unused-item": "error",
+    "unused-file": "error",
+    "unused-package": "warning",
+    "unknown-usage": "warning"
+  }
+}
+```
+
+Each rule accepts `error`, `warning`, or `off`. Use `--policy <path>` for your policy, `--baseline <path>` for [reviewed existing findings](/documentation/commands/check/baseline), or `--summary` for counts and coverage only.
+
+| Exit | Meaning |
+| --- | --- |
+| `0` | Complete analysis; no new error-level findings. |
+| `1` | Complete analysis; new error-level findings. |
+| `2` | Incomplete analysis, invalid input, or incompatible baseline. |
+
+Incomplete coverage blocks checking even when every rule is off. Supply private registry credentials through CI secrets and preserve the exit status. See the [consumer workflow](https://github.com/lirena00/compadcn/blob/main/examples/ci/shadcn-plus.yml).
+
+## Example output
+
+<TerminalOutput id="check" />

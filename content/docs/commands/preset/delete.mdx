@@ -1,0 +1,12 @@
+---
+title: preset delete
+description: Delete a custom preset record from legacy storage.
+---
+
+```npm
+npx shadcn-plus@latest preset delete my-preset
+```
+
+This deletes the custom preset record, not installed component files. It requires an interactive terminal; JSON and plain output flags are unsupported.
+
+To keep a portable copy first, [migrate the preset](/documentation/commands/collection/migrate). To remove unused component files, use a [reviewed cleanup plan](/documentation/commands/plan).

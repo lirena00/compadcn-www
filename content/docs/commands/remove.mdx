@@ -1,0 +1,16 @@
+---
+title: remove
+description: Preview removal of named targets; retained as a compatibility alias.
+---
+
+```npm
+npx shadcn-plus@latest remove @blobz/avatar-chip --ownership .shadcn-plus/ownership.json --out .shadcn-plus/plans/widget.json
+```
+
+`remove` / `rm` uses [plan remove](/documentation/commands/plan/remove). It requires explicit references and **does not delete files**.
+
+Use the same planning options, inspect the saved diffs, then [apply](/documentation/commands/apply) the reviewed artifact separately. See [v1 migration](/documentation/migration) for changed behavior.
+
+## Example output
+
+<TerminalOutput id="remove" />

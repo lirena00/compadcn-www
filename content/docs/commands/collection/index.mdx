@@ -1,0 +1,18 @@
+---
+title: collection
+description: Share component selections as portable JSON files.
+---
+
+A collection describes **what to install**, independently of what is already installed. It contains qualified component addresses and optional intent.
+
+| Command | Purpose |
+| --- | --- |
+| [collection create](/documentation/commands/collection/create) | Save a new component selection. |
+| [collection show](/documentation/commands/collection/show) | Read one collection. |
+| [collection list](/documentation/commands/collection/list) | List collection files. |
+| [collection install](/documentation/commands/collection/install) | Install into a selected application. |
+| [collection migrate](/documentation/commands/collection/migrate) | Convert old custom presets explicitly. |
+
+Collections do not include credentials, registry URLs, copied dependencies, or pinned registry versions. Recipients configure their own namespace bindings. A collection is not a lockfile.
+
+`collections` is also accepted as an alias.

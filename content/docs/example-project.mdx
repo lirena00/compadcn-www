@@ -1,0 +1,55 @@
+---
+title: Example project
+description: The small React/Vite dashboard used for the terminal screenshots.
+---
+
+Screenshots are captured from real shadcn-plus source-build runs against a small **Dashboard** project. It uses the official Button source and the live [Blobz registry](https://blobz.lirena.in/docs/components).
+
+## Starting point
+
+The app imports shadcn's Button and Blobz's Avatar. Avatar Chip and Avatar Profile are present but not imported:
+
+<Files>
+  <Folder name="dashboard" defaultOpen>
+    <File name="components.json" />
+    <Folder name="src" defaultOpen>
+      <File name="main.tsx" />
+      <Folder name="components/ui" defaultOpen>
+        <File name="button.tsx" />
+        <File name="avatar.tsx" />
+      </Folder>
+      <Folder name="components/blobz" defaultOpen>
+        <File name="avatar-chip.tsx" />
+        <File name="avatar-profile.tsx" />
+      </Folder>
+      <File name="styles.css" />
+    </Folder>
+  </Folder>
+</Files>
+
+```json title="components.json · registry excerpt"
+{
+  "registries": {
+    "@blobz": "https://blobz.lirena.in/r/{name}.json"
+  }
+}
+```
+
+Blobz is configured explicitly so it participates in inventory and analysis as well as installation. For these captures, `@shadcn` points to a local one-item catalog containing the real official Button manifest. The full official catalog is broader and can report unsupported destinations; the demo does not hide those errors or claim full-catalog coverage.
+
+## Follow the project
+
+1. [Search](/documentation/commands/search) finds Blobz avatars; [inventory](/documentation/commands/inventory) distinguishes catalog entries from local files.
+2. [Add](/documentation/commands/add) and [collection install](/documentation/commands/collection/install) recognize the existing files and skip replacements. These captures demonstrate existing-file handling, not a fresh upstream installation.
+3. [Audit](/documentation/commands/audit) and [why](/documentation/commands/why) explain usage. [Check](/documentation/commands/check) reports unused compositions as policy findings.
+4. [Planning](/documentation/commands/plan) proposes eligible unused files. [Apply](/documentation/commands/apply) runs a real Vite build; [restore](/documentation/commands/restore) recovers deleted files.
+
+## Reading the screenshots
+
+Each image has click-to-zoom and a full text transcript. Long reports show an excerpt. Absolute paths are shortened to `/projects/dashboard`; generated IDs and counts vary between runs.
+
+The captures use an explicit `src/main.tsx` entry for the Vite alias configuration and an isolated registry cache. Screenshots show the linked source-build command; package-manager tabs show the intended published-package equivalent.
+
+V2 is [not published yet](/documentation/quick-start). The terminal images were generated from this project's source, without running the unrelated package currently registered under the npm name.
+
+The pinned upstream installer currently rejects explicit overrides of its built-in registry namespaces. That includes the demo's registry configuration. The screenshots therefore use real pre-existing registry files and show skipped installs; they do not claim a successful fresh installation through those overrides.

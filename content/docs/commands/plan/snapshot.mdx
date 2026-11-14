@@ -1,0 +1,24 @@
+---
+title: plan snapshot
+description: Save observed component ownership mappings for explicit review.
+---
+
+```npm
+npx shadcn-plus@latest plan snapshot --out .shadcn-plus/ownership.json
+```
+
+Open the JSON and verify each component address and its mapped files. Passing this artifact to another command's `--ownership` accepts the mapping as your baseline.
+
+| Option | Purpose |
+| --- | --- |
+| `--out <new.json>` | Create a new ownership artifact; never overwrite. |
+| `--item <reference>` | Restrict the proposal; repeat for more items. |
+| `--cwd <app>` | Select the target package. |
+
+The snapshot records current files and hashes. It does not reconstruct installation history or prove original upstream content. Ambiguous origins, partial mappings, linked files, and incomplete analysis remain excluded.
+
+## Example output
+
+<TerminalOutput id="plan-snapshot" />
+
+Next: create a [prune plan](/documentation/commands/plan/prune) or a [named removal plan](/documentation/commands/plan/remove).

@@ -1,0 +1,5 @@
+{
+  "title": "Commands",
+  "defaultOpen": true,
+  "pages": ["index", "doctor", "search", "add", "inventory", "audit", "why", "graph", "plan", "apply", "operation", "restore", "collection", "check", "agent-skill", "remove", "preset"]
+}

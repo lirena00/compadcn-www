@@ -1,0 +1,28 @@
+---
+title: plan remove
+description: Preview exact removal of named unused items or managed files.
+---
+
+```npm
+npx shadcn-plus@latest plan remove @blobz/avatar-chip --ownership .shadcn-plus/ownership.json --out .shadcn-plus/plans/widget.json
+```
+
+Name one or more observed items, or unmapped files inside managed directories. Select the owning item for a multi-file component. Nothing is deleted during planning.
+
+| Option | Purpose |
+| --- | --- |
+| `--ownership <path>` | Use a reviewed baseline. |
+| `--include-unverified` | Accept the observed mapping of these named targets. |
+| `--include-modified` | Include these named targets despite changes since the snapshot. |
+| `--verify-script <name>` | Require a package check during application. |
+| `--out <new.json>` | Save a new plan for review. |
+
+<Callout type="warn" title="Inclusion flags do not bypass usage checks">
+Live or development use, public contracts, partial items, shared ownership, retained dependents, and incomplete analysis still block removal. If any named target is blocked, no executable operations are produced.
+</Callout>
+
+## Example output
+
+<TerminalOutput id="plan-remove" />
+
+Next: review the diffs, run [plan check](/documentation/commands/plan/check), and [apply](/documentation/commands/apply) separately.
