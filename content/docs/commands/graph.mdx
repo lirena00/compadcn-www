@@ -12,7 +12,7 @@ Graph includes cross-registry dependencies, source references, reverse dependent
 ## Focus on one component
 
 ```npm
-npx shadcn-plus@latest graph --focus @shadcn/button --reverse --transitive
+npx shadcn-plus@latest graph --focus @blobz/avatar --reverse --transitive
 ```
 
 | Option | Purpose |
@@ -24,3 +24,7 @@ npx shadcn-plus@latest graph --focus @shadcn/button --reverse --transitive
 | `--json` | Return the structured graph. |
 
 Unresolved references and unsupported inputs stay visible as incomplete coverage. Use [audit](/documentation/commands/audit) to classify usage and [why](/documentation/commands/why) for a focused explanation.
+
+## Example output
+
+<TerminalOutput id="graph" />

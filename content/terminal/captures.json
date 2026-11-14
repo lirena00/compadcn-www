@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "2.0.0",
+  "capturedAt": "2026-11-14T05:27:10.293Z",
+  "renderer": {
+    "name": "Charm Freeze",
+    "version": "0.2.2",
+    "rasterizer": "@resvg/resvg-js@2.6.2",
+    "scale": 3
+  },
+  "project": "Dashboard React/Vite demo",
+  "provenance": [
+    {
+      "url": "https://ui.shadcn.com/r/styles/new-york-v4/button.json",
+      "sha256": "4b8d7d848742727973c1b088af8d15f0b628272a1316f2d2fa344e73ddff9e9c"
+    },
+    {
+      "url": "https://blobz.lirena.in/r/avatar.json",
+      "sha256": "b91aa8073787c37a6658a5ba94db61d29161b65544773c5ddd2db87fee24fa2d"
+    },
+    {
+      "url": "https://blobz.lirena.in/r/avatar-chip.json",
+      "sha256": "f3ea827af16b75aef23d83c535fcd2098c9762a3e118b01ce10002705890fa05"
+    },
+    {
+      "url": "https://blobz.lirena.in/r/avatar-profile.json",
+      "sha256": "298239f183d81583ef5a20c71f78e5e2752939f710aee9187bb393a85c3972f8"
+    }
+  ],
+  "normalization": "Absolute demo paths are replaced with /projects/dashboard; path separators use slashes. Output is otherwise unchanged. Images show at most the first 20 output lines; transcripts are complete.",
+  "entries": {
+    "doctor": {
+      "image": "/images/terminal/doctor.png",
+      "width": 2454,
+      "height": 1192,
+      "command": "shadcn-plus doctor",
+      "output": "Project: /projects/dashboard\nFramework: vite-react\nWorkspace: standalone\nPackage manager: pnpm (packageManager in /projects/dashboard)\nCompiler configs: /projects/dashboard/tsconfig.json\nComponents config: /projects/dashboard/components.json\nAlias components: @/components -> /projects/dashboard/src/components (tsconfig)\nAlias ui: @/components/ui -> /projects/dashboard/src/components/ui (tsconfig)\nAlias utils: @/lib/utils -> /projects/dashboard/src/lib/utils.ts (tsconfig)\nAlias lib: @/lib -> /projects/dashboard/src/lib (tsconfig)\nAlias hooks: @/hooks -> /projects/dashboard/src/hooks (tsconfig, not created)\nDiscovery complete. Configuration targets resolved.",
+      "exitCode": 0,
+      "description": "The dashboard project resolves as Vite with configured UI aliases.",
+      "excerpt": false,
+      "sha256": "903f2d72c175f04066531f62948bacfeeb7d6ad4ec8102540e2b9c273eda50bb"
+    },
+    "search": {
+      "image": "/images/terminal/search.png",
+      "width": 2711,
+      "height": 1592,
+      "command": "shadcn-plus search avatar --registry @blobz --limit 6 --cache-dir .shadcn-plus/cache",
+      "output": "Project: /projects/dashboard\nCatalog: 11 item bindings; 9 matches (6 shown)\n@blobz/avatar [present; registry:ui] - Shadcn avatar primitives with deterministic Blobz fallbacks, images, status, and groups.\n@blobz/avatar-account-menu [absent; registry:block] - A ready-to-ship account menu with a Blobz avatar trigger, identity summary, and typed actions.\n@blobz/avatar-chip [present; registry:component] - A compact identity chip with a Blobz avatar and an optional accessible remove action.\n@blobz/avatar-profile [present; registry:component] - Compound profile-row primitives for an avatar, identity text, metadata, and actions.\n@blobz/avatar-select [absent; registry:block] - A ready-to-ship person selector with Blobz avatars in the trigger and option list.\n@blobz/avatar-team-list [absent; registry:block] - A responsive team roster with Blobz avatars, status, roles, descriptions, and action slots.\n@shadcn [/projects/dashboard]: ready; 1 items (network)\n@blobz [/projects/dashboard]: ready; 10 items (network)\n3 matches omitted. Narrow the query or increase --limit (up to 1000).\nCatalog search complete. Local presence does not establish registry ownership.",
+      "exitCode": 0,
+      "description": "Search the real Blobz catalog for avatar components.",
+      "excerpt": false,
+      "sha256": "82ee03fa1e54de7f0f8e56e72c52c349ee6082666e30cb0cb76ff54d692ae978"
+    },
+    "inventory": {
+      "image": "/images/terminal/inventory.png",
+      "width": 2654,
+      "height": 1392,
+      "command": "shadcn-plus inventory --cache-dir .shadcn-plus/cache",
+      "output": "Project: /projects/dashboard\nScopes: 1\nRegistries: 2 (0 incomplete)\nCatalog: 11 unique items, 11 qualified addresses\nLocal files: 5 (1 unknown origin, 0 ambiguous)\nItem candidates: 4 present, 0 partial\n@shadcn [/projects/dashboard]: ready, 1 catalog items (fresh-cache)\n@blobz [/projects/dashboard]: ready, 10 catalog items (fresh-cache)\n@blobz/avatar [/projects/dashboard]: present, candidate origin (1/1 files)\n@blobz/avatar-chip [/projects/dashboard]: present, candidate origin (1/1 files)\n@blobz/avatar-profile [/projects/dashboard]: present, candidate origin (1/1 files)\n@shadcn/button [/projects/dashboard]: present, candidate origin (1/1 files)\nOwnership candidates require review; inventory does not establish installation history or cleanup eligibility.\nInventory complete.",
+      "exitCode": 0,
+      "description": "Official and Blobz catalog entries stay separate from observed local files.",
+      "excerpt": false,
+      "sha256": "5a849be1735d8fc6ace5672d9a431a693aa23e2d372b8fe53862b2cd08e54418"
+    },
+    "audit": {
+      "image": "/images/terminal/audit.png",
+      "width": 2482,
+      "height": 1796,
+      "command": "shadcn-plus audit --entry src/main.tsx --cache-dir .shadcn-plus/cache",
+      "output": "Project: /projects/dashboard\nAudit snapshot: 23c3e8e57f721142cfbdcc95b9f2a12d5287a2bbd3c9f19e9ccaabbb1d738cd0\nItems: 4; runtime=2, development-only=0, unused-candidate=2, unknown=0\nManaged files: 5; unknown origin=1; package candidates=1\nCoverage: graph=true, roots=true, analyzer=true, workspace=true\n@blobz/avatar: runtime [RUNTIME_REFERENCE_PATH]\n  Retain: OWNERSHIP_UNVERIFIED, SHARED_RESOURCE_RETAINED\n@blobz/avatar-chip: unused-candidate [ANALYZERS_AGREE_UNREACHABLE]\n  Retain: OWNERSHIP_UNVERIFIED\n@blobz/avatar-profile: unused-candidate [ANALYZERS_AGREE_UNREACHABLE]\n  Retain: OWNERSHIP_UNVERIFIED\n@shadcn/button: runtime [RUNTIME_REFERENCE_PATH]\n  Retain: OWNERSHIP_UNVERIFIED\nsrc/lib/utils.ts: unused-candidate [unknown origin; ANALYZERS_AGREE_UNREACHABLE]\n@base-ui/react [/projects/dashboard]: runtime [OBSERVED_RUNTIME_PACKAGE_IMPORT]\n@blobz/react [/projects/dashboard]: runtime [OBSERVED_RUNTIME_PACKAGE_IMPORT]\nclass-variance-authority [/projects/dashboard]: runtime [OBSERVED_RUNTIME_PACKAGE_IMPORT]\ncn [/projects/dashboard]: runtime [OBSERVED_RUNTIME_PACKAGE_IMPORT]\nlucide-react [/projects/dashboard]: candidate [ANALYZERS_AGREE_PACKAGE_UNUSED]\nradix-ui [/projects/dashboard]: runtime [OBSERVED_RUNTIME_PACKAGE_IMPORT]\nreact [/projects/dashboard]: runtime [OBSERVED_RUNTIME_PACKAGE_IMPORT]\nRead-only audit. Unused candidates require ownership review and a cleanup plan; no files or packages were removed.\nAudit complete within the reported scopes and entry policy.",
+      "exitCode": 0,
+      "description": "The dashboard imports the official Button and Blobz Avatar.",
+      "excerpt": true,
+      "sha256": "0ee60b9eb9835aabea5a74a34cedc6ab035ca2807f25c15c3afe3181e6245d3a"
+    },
+    "why": {
+      "image": "/images/terminal/why.png",
+      "width": 2568,
+      "height": 1192,
+      "command": "shadcn-plus why @blobz/avatar --entry src/main.tsx --cache-dir .shadcn-plus/cache",
+      "output": "item: @blobz/avatar\nUsage: runtime\nReasons: RUNTIME_REFERENCE_PATH\nCoverage: graph=true, roots=true, analyzer=true, workspace=true\nRetain: OWNERSHIP_UNVERIFIED, SHARED_RESOURCE_RETAINED\nRoot: /projects/dashboard/src/main.tsx [runtime; explicit-entry]\n  /projects/dashboard/src/main.tsx:3:40 -> /projects/dashboard/src/components/ui/avatar.tsx [runtime]\nFile: /projects/dashboard/src/components/ui/avatar.tsx [runtime]\nRegistry dependent: @blobz/avatar-chip [unused-candidate]\nRegistry dependent: @blobz/avatar-profile [unused-candidate]\nCleanup eligible: false. This explanation does not authorize removal.",
+      "exitCode": 0,
+      "description": "Trace why the dashboard retains the Blobz Avatar.",
+      "excerpt": false,
+      "sha256": "5c85d9c39ff2800d07a7a2dc25db7104b6c286585d47fb35b25b27aaff4613ca"
+    },
+    "graph": {
+      "image": "/images/terminal/graph.png",
+      "width": 2625,
+      "height": 1256,
+      "command": "shadcn-plus graph --focus @blobz/avatar --reverse --transitive --cache-dir .shadcn-plus/cache",
+      "output": "Project: /projects/dashboard\nGraph scope: installed\nSnapshot: 6a8038d4609d2a812a3c385a90641ecdce92c6a930db752d4fbee0e748df64be\nNodes: 3 item bindings, 0 local files, 0 package requests, 0 retained resources\nEdges: 2; unresolved nodes: 0; cycles: 0\nCoverage: inventory=true, registry=true, source=true; usage=not-analyzed\nView: @blobz/avatar; dependents; transitive\n@blobz/avatar-chip -> @blobz/avatar [registry-dependency, declaration, resolved]\n@blobz/avatar-profile -> @blobz/avatar [registry-dependency, declaration, resolved]\nRegistry declarations and observed imports are separate relations. Usage and cleanup eligibility are not classified.\nGraph complete within the reported scopes and supported reference formats.",
+      "exitCode": 0,
+      "description": "Follow reverse dependencies from the custom-registry Avatar.",
+      "excerpt": false,
+      "sha256": "ad68ebd468da5710408ede3e4a2dfe8dc86db4fa55d29350017401d566745d82"
+    },
+    "add": {
+      "image": "/images/terminal/add.png",
+      "width": 2397,
+      "height": 584,
+      "command": "shadcn-plus add @blobz/avatar-chip --yes --cache-dir .shadcn-plus/cache",
+      "output": "Project: /projects/dashboard\nInstalled: 0; skipped with local files present: 1; verified selected files: 0\nSkipped @blobz/avatar-chip (use --overwrite to replace local files)",
+      "exitCode": 0,
+      "description": "An already-present Blobz Avatar Chip is detected and skipped without overwriting it.",
+      "excerpt": false,
+      "sha256": "3257563d795f9bbe65d45328dbf93101faad0000f9bc2f67b264fc24dac042f2"
+    },
+    "collection-create": {
+      "image": "/images/terminal/collection-create.png",
+      "width": 2625,
+      "height": 584,
+      "command": "shadcn-plus collection create collections/team.json button @blobz/avatar-profile --name Team",
+      "output": "Created Team: 2 items\n/projects/dashboard/collections/team.json",
+      "exitCode": 0,
+      "description": "Create a selection containing official and Blobz components.",
+      "excerpt": false,
+      "sha256": "805455a14ef60815761967eee5e4e94dc50ee1c8b4a3fec2db2478d22d9dacf0"
+    },
+    "collection-show": {
+      "image": "/images/terminal/collection-show.png",
+      "width": 1654,
+      "height": 652,
+      "command": "shadcn-plus collection show collections/team.json",
+      "output": "Team\n\n  @shadcn/button\n  @blobz/avatar-profile",
+      "exitCode": 0,
+      "description": "Read the saved qualified component selection.",
+      "excerpt": false,
+      "sha256": "9e17b551c0322d3b7a6bc932cab4430fe7efeb0e4fa57a1ec8a500637c66124c"
+    },
+    "collection-list": {
+      "image": "/images/terminal/collection-list.png",
+      "width": 1825,
+      "height": 584,
+      "command": "shadcn-plus collection list collections",
+      "output": "Collections: /projects/dashboard/collections\nTeam: 2 items [/projects/dashboard/collections/team.json]\n1 files",
+      "exitCode": 0,
+      "description": "List the demo collection directory.",
+      "excerpt": false,
+      "sha256": "c2f630d9253ddf9357550bbc5b449bd49b714beb2a4387e53a3f1f708282b43f"
+    },
+    "collection-install": {
+      "image": "/images/terminal/collection-install.png",
+      "width": 2511,
+      "height": 720,
+      "command": "shadcn-plus collection install collections/team.json --yes --cache-dir .shadcn-plus/cache",
+      "output": "Project: /projects/dashboard\nInstalled: 0; skipped with local files present: 2; verified selected files: 0\nSkipped @shadcn/button (use --overwrite to replace local files)\nSkipped @blobz/avatar-profile (use --overwrite to replace local files)",
+      "exitCode": 0,
+      "description": "A collection recognizes already-present official and Blobz files and skips replacements.",
+      "excerpt": false,
+      "sha256": "aebbc7a21b6caffdc78377bf2f3a9328e056124141e615388ec8f1b6e3b17d6c"
+    },
+    "collection-migrate": {
+      "image": "/images/terminal/collection-migrate.png",
+      "width": 2454,
+      "height": 788,
+      "command": "shadcn-plus collection migrate --from .shadcn-plus/legacy-presets.json --map button=@shadcn/button --map avatar=@blobz/avatar --cache-dir .shadcn-plus/cache",
+      "output": "Legacy migration: preview\nSource: /projects/dashboard/.shadcn-plus/legacy-presets.json\nSource hash: 3968b367e1ae28d263a43cf0a51cb7f225fbc16b8dcae0e18054e96b6b4fe701\ndashboard: Dashboard; 2 items -> dashboard-66cd9688a2ae.json\nNo migration files written. Review mappings, then use --out <new-directory>.",
+      "exitCode": 0,
+      "description": "Preview a legacy preset mapped to official and Blobz addresses.",
+      "excerpt": false,
+      "sha256": "6c827649c5d55a539e85b83b7a0583e75e96ea415f74ea446109ae96a04069b3"
+    },
+    "agent-skill": {
+      "image": "/images/terminal/agent-skill.png",
+      "width": 2654,
+      "height": 452,
+      "command": "shadcn-plus agent skill --out .agents/skills/shadcn-plus",
+      "output": "Wrote shadcn-plus agent skill: /projects/dashboard/.agents/skills/shadcn-plus/SKILL.md",
+      "exitCode": 0,
+      "description": "Install the bundled skill into an explicit demo directory.",
+      "excerpt": false,
+      "sha256": "f7d03f153eb87fd7c80adf19f5e98c237b4b19ac9aaa4dd6adec64480372e8de"
+    },
+    "check": {
+      "image": "/images/terminal/check.png",
+      "width": 2682,
+      "height": 1528,
+      "command": "shadcn-plus check --limit 4 --entry src/main.tsx --cache-dir .shadcn-plus/cache",
+      "output": "ERROR CHECK_FAILED: Check: failed [.]\nNew errors: 3; new warnings: 1; accepted: 0; resolved: 0\nCoverage: graph=true, roots=true, analyzer=true, workspace=true\nERROR unused-file: src/lib/utils.ts\n  Reference: n3d0b4ee5bbdc4ea6c5989f48b535609248eb678ddce1263b6e381904337712a0; scopes: .\nERROR unused-item: @blobz/avatar-chip\n  Reference: item:e5a2f4336cff90ecd977ccedb986c98ec3214efa58789fb2b567b9a45db7a5a5; scopes: .\nERROR unused-item: @blobz/avatar-profile\n  Reference: item:f25135c30b85887e99fcf6e9d37ef8ca3a078a96f6cf3606a3eb97d53ad0e5cd; scopes: .\nWARNING unused-package: lucide-react\n  Reference: n019296c34ad037cd58e08aef2363387b6b29215f008a72226b658a718cee51a9; scopes: .\nRead-only policy check. Use why <reference> for details; findings and baseline waivers do not authorize cleanup.",
+      "exitCode": 1,
+      "description": "CI reports unused Blobz compositions as policy findings.",
+      "excerpt": false,
+      "sha256": "e8ac6aa94787562a20f2a79d26bcb11d26774f91bfb63d72083e81e3fc31e143"
+    },
+    "check-baseline": {
+      "image": "/images/terminal/check-baseline.png",
+      "width": 2739,
+      "height": 720,
+      "command": "shadcn-plus check baseline --out .shadcn-plus/check-baseline.json --entry src/main.tsx --cache-dir .shadcn-plus/cache",
+      "output": "Baseline: 0ff3b750a40879e08d22c48334e7de179ce3a87464a36b11fd49d61b02f16200\nRecorded 4 findings for review. No issues were fixed.\n/projects/dashboard/.shadcn-plus/check-baseline.json\nPassing --baseline accepts these reviewed findings; coverage failures remain blocking.",
+      "exitCode": 0,
+      "description": "Capture current findings for review without fixing or hiding them.",
+      "excerpt": false,
+      "sha256": "be6cd04e7e63c6b4f5f35ccc4123101d31c09b27d8be4805f91ceb11b3227283"
+    },
+    "plan-snapshot": {
+      "image": "/images/terminal/plan-snapshot.png",
+      "width": 2625,
+      "height": 1056,
+      "command": "shadcn-plus plan snapshot --out .shadcn-plus/ownership.json --entry src/main.tsx --cache-dir .shadcn-plus/cache",
+      "output": "Ownership snapshot: e4dfc75f47a0d3507a8febf93a55c63b6791c69e858d47aea30070f5990bb6c9\nObserved mappings: 4; excluded: 0\n@shadcn/button: 1 observed files\n@blobz/avatar: 1 observed files\n@blobz/avatar-chip: 1 observed files\n@blobz/avatar-profile: 1 observed files\nReview these mappings before supplying --ownership to a cleanup plan. This is an observed local baseline, not upstream installation history.\nArtifact: /projects/dashboard/.shadcn-plus/ownership.json",
+      "exitCode": 0,
+      "description": "Propose observed ownership for explicit review.",
+      "excerpt": false,
+      "sha256": "6d6bf9612946431a00896e7bcd5c62d3f64d9da011d2a5221f77655d084f0665"
+    },
+    "plan-prune": {
+      "image": "/images/terminal/plan-prune.png",
+      "width": 2711,
+      "height": 1928,
+      "command": "shadcn-plus plan prune --ownership .shadcn-plus/ownership.json --verify-script build --out .shadcn-plus/plans/cleanup.json --summary --entry src/main.tsx --cache-dir .shadcn-plus/cache",
+      "output": "Cleanup plan: bd06fe45dfaf1a08a2e282feb793e8bbf685761c9a90d850b81790d4b93f6b0d\nStatus: ready; mode: prune\nProject: . [/projects/dashboard]\nSelected targets: 2; file deletions: 2; retained targets: 2\nInput fingerprint: a53b279335282df37a42b67e737b4c43d570deed9eccae0a12aba43b6739e9bb (16 files)\nSELECT @blobz/avatar-chip [snapshot]\nSELECT @blobz/avatar-profile [snapshot]\nKEEP @shadcn/button: USAGE_RETAINED\nKEEP @blobz/avatar: USAGE_RETAINED, SHARED_RESOURCE_RETAINED\nKEEP PACKAGE @base-ui/react [runtime]\nKEEP PACKAGE @blobz/react [runtime]\nKEEP PACKAGE class-variance-authority [runtime]\nKEEP PACKAGE cn [runtime]\nKEEP PACKAGE lucide-react [candidate]\nKEEP PACKAGE radix-ui [runtime]\nKEEP PACKAGE react [runtime]\nRetained shared resources: 3\nVerification build: configured; required; not run during planning\nPlanning only. No project source, imports, packages, or lockfiles were changed.\nArtifact: /projects/dashboard/.shadcn-plus/plans/cleanup.json",
+      "exitCode": 0,
+      "description": "Plan unused component deletions while retaining the live Avatar and Button.",
+      "excerpt": false,
+      "sha256": "d8df7aedf68fdc7650628c675cad4b3afcb5a0106b0f95e4d258266e64caa713"
+    },
+    "plan-remove": {
+      "image": "/images/terminal/plan-remove.png",
+      "width": 2682,
+      "height": 1864,
+      "command": "shadcn-plus plan remove @blobz/avatar-chip --ownership .shadcn-plus/ownership.json --out .shadcn-plus/plans/chip.json --summary --entry src/main.tsx --cache-dir .shadcn-plus/cache",
+      "output": "Cleanup plan: b70398ac4096fbddfc5d926c8e53066aa6b66492b6c9e964b4bda93777ff880e\nStatus: ready; mode: remove\nProject: . [/projects/dashboard]\nSelected targets: 1; file deletions: 1; retained targets: 0\nInput fingerprint: 812bcae91b68e5f5cba272334ff2208dd9b34d9d20961c1f02706770a526076b (16 files)\nSELECT @blobz/avatar-chip [snapshot]\nKEEP PACKAGE @base-ui/react [runtime]\nKEEP PACKAGE @blobz/react [runtime]\nKEEP PACKAGE class-variance-authority [runtime]\nKEEP PACKAGE cn [runtime]\nKEEP PACKAGE lucide-react [candidate]\nKEEP PACKAGE radix-ui [runtime]\nKEEP PACKAGE react [runtime]\nRetained shared resources: 3\nVerification typecheck: not-configured; not run during planning\nVerification lint: not-configured; not run during planning\nVerification build: configured; required; not run during planning\nPlanning only. No project source, imports, packages, or lockfiles were changed.\nArtifact: /projects/dashboard/.shadcn-plus/plans/chip.json",
+      "exitCode": 0,
+      "description": "Preview removal of one named, unused Blobz component.",
+      "excerpt": false,
+      "sha256": "ff109f98ba8c06a6642b342323afc94ea1753632832a1f3564cee3e18e516e54"
+    },
+    "remove": {
+      "image": "/images/terminal/remove.png",
+      "width": 2682,
+      "height": 1864,
+      "command": "shadcn-plus remove @blobz/avatar-chip --ownership .shadcn-plus/ownership.json --out .shadcn-plus/plans/alias.json --summary --entry src/main.tsx --cache-dir .shadcn-plus/cache",
+      "output": "Cleanup plan: 1874dccfead4f9a8a60849c4ba04c61ec041729a13921af92ce737b6c392e111\nStatus: ready; mode: remove\nProject: . [/projects/dashboard]\nSelected targets: 1; file deletions: 1; retained targets: 0\nInput fingerprint: f4749d55ecc37c1c9387fdb48987edc8f0a3b414d6361af4877dd107da1747cc (16 files)\nSELECT @blobz/avatar-chip [snapshot]\nKEEP PACKAGE @base-ui/react [runtime]\nKEEP PACKAGE @blobz/react [runtime]\nKEEP PACKAGE class-variance-authority [runtime]\nKEEP PACKAGE cn [runtime]\nKEEP PACKAGE lucide-react [candidate]\nKEEP PACKAGE radix-ui [runtime]\nKEEP PACKAGE react [runtime]\nRetained shared resources: 3\nVerification typecheck: not-configured; not run during planning\nVerification lint: not-configured; not run during planning\nVerification build: configured; required; not run during planning\nPlanning only. No project source, imports, packages, or lockfiles were changed.\nArtifact: /projects/dashboard/.shadcn-plus/plans/alias.json",
+      "exitCode": 0,
+      "description": "The compatibility command produces a plan rather than deleting files.",
+      "excerpt": false,
+      "sha256": "28baa717b449b1b1b58f59139cd2900544dfc1436100dd5574474ba67cd13b45"
+    },
+    "plan-check": {
+      "image": "/images/terminal/plan-check.png",
+      "width": 2682,
+      "height": 584,
+      "command": "shadcn-plus plan check .shadcn-plus/plans/cleanup.json --cache-dir .shadcn-plus/cache",
+      "output": "Plan: bd06fe45dfaf1a08a2e282feb793e8bbf685761c9a90d850b81790d4b93f6b0d\nValid: true; ready: true\nRead-only validation; no verification scripts or cleanup operations were executed.",
+      "exitCode": 0,
+      "description": "Revalidate the reviewed cleanup artifact.",
+      "excerpt": false,
+      "sha256": "a7ce44250cf321ccb97f4c385560ba114d1bd1c8ed064b918fd5aaa6aa73dc7e"
+    },
+    "apply": {
+      "image": "/images/terminal/apply.png",
+      "width": 2682,
+      "height": 1124,
+      "command": "shadcn-plus apply --plan .shadcn-plus/plans/cleanup.json --precheck --yes --cache-dir .shadcn-plus/cache",
+      "output": "Operation: 138a21d7-eb59-4fd7-ab77-60972d3e5428\nPlan: bd06fe45dfaf1a08a2e282feb793e8bbf685761c9a90d850b81790d4b93f6b0d\nStatus: completed\nPlanned: 2; attempted: 2; deleted: 2; recovered: 0; conflicts: 0\nDELETED src/components/blobz/avatar-chip.tsx\nDELETED src/components/blobz/avatar-profile.tsx\nbefore build: passed (exit 0)\nafter build: passed (exit 0)\nJournal: /projects/dashboard/.shadcn-plus/operations/138a21d7-eb59-4fd7-ab77-60972d3e5428/journal.jsonl",
+      "exitCode": 0,
+      "description": "Back up unused components, delete the planned files, and run the real Vite build.",
+      "excerpt": false,
+      "sha256": "2851263712a971d3a479ae29d1061d745774f4520305fe46515d286c193ede6b"
+    },
+    "operation": {
+      "image": "/images/terminal/operation.png",
+      "width": 2397,
+      "height": 1056,
+      "command": "shadcn-plus operation 138a21d7-eb59-4fd7-ab77-60972d3e5428",
+      "output": "Operation: 138a21d7-eb59-4fd7-ab77-60972d3e5428\nPlan: bd06fe45dfaf1a08a2e282feb793e8bbf685761c9a90d850b81790d4b93f6b0d\nStatus: completed\nPlanned: 2; attempted: 2; deleted: 2; recovered: 0; conflicts: 0\nDELETED src/components/blobz/avatar-chip.tsx\nDELETED src/components/blobz/avatar-profile.tsx\nbefore build: passed (exit 0)\nafter build: passed (exit 0)\nJournal: /projects/dashboard/.shadcn-plus/operations/138a21d7-eb59-4fd7-ab77-60972d3e5428/journal.jsonl",
+      "exitCode": 0,
+      "description": "Inspect the recorded deletions and build verification.",
+      "excerpt": false,
+      "sha256": "d328f7beacb2d30f3c4070b4a8a21bcb53d0d03ba6af5cc0339f3a0b2478b1fd"
+    },
+    "restore": {
+      "image": "/images/terminal/restore.png",
+      "width": 2397,
+      "height": 1192,
+      "command": "shadcn-plus restore 138a21d7-eb59-4fd7-ab77-60972d3e5428 --yes",
+      "output": "Operation: 138a21d7-eb59-4fd7-ab77-60972d3e5428\nPlan: bd06fe45dfaf1a08a2e282feb793e8bbf685761c9a90d850b81790d4b93f6b0d\nStatus: restored\nPlanned: 2; attempted: 2; deleted: 2; recovered: 2; conflicts: 0\nDELETED src/components/blobz/avatar-chip.tsx\nDELETED src/components/blobz/avatar-profile.tsx\nRECOVERED src/components/blobz/avatar-profile.tsx\nRECOVERED src/components/blobz/avatar-chip.tsx\nbefore build: passed (exit 0)\nafter build: passed (exit 0)\nJournal: /projects/dashboard/.shadcn-plus/operations/138a21d7-eb59-4fd7-ab77-60972d3e5428/journal.jsonl",
+      "exitCode": 0,
+      "description": "Recover the original component files from the operation backup.",
+      "excerpt": false,
+      "sha256": "0960d514cff9ad8a7f28c854fa332b3c54984e854352b22b6eaa00fe6cbf8e9c"
+    }
+  },
+  "sourceCommit": "7b1788f62e027f54c6ab45638dc69a83bc9ba309"
+}

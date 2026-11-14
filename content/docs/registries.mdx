@@ -7,12 +7,12 @@ shadcn-plus reads your project's registry configuration. Custom and private sour
 
 ## Configure a source
 
-Add your registry to `components.json`. This example uses a placeholder URL:
+Register public or private sources in `components.json`:
 
 ```json title="components.json · registry excerpt"
 {
   "registries": {
-    "@company": "https://registry.example.com/r/{name}.json",
+    "@blobz": "https://blobz.lirena.in/r/{name}.json",
     "@private": {
       "url": "https://private.example.com/r/{name}.json",
       "headers": {
@@ -23,7 +23,19 @@ Add your registry to `components.json`. This example uses a placeholder URL:
 }
 ```
 
-Replace the URLs with your compatible shadcn registry endpoints. `components.json` entries override same-package `package.json` registry entries. Parent package configurations are not merged.
+The `@blobz` URL is the real [Blobz registry](https://blobz.lirena.in/docs/components); replace the private example URL with your own endpoint. `components.json` entries override same-package `package.json` registry entries. Parent package configurations are not merged.
+
+```npm
+npx shadcn-plus@latest search avatar --registry @blobz
+```
+
+See the [example project](/documentation/example-project) for captured Blobz search, inventory, usage, and cleanup output.
+
+## Built-in registry overrides
+
+<Callout type="warn" title="Current source-build installation limit">
+The pinned upstream shadcn installer rejects explicit overrides of its built-in registry names. Configured Blobz analysis works, but a fresh install through such an override can return `INSTALL_FAILED`. The demo shows existing-file skips and does not claim that this limitation is resolved.
+</Callout>
 
 ## Private authentication
 

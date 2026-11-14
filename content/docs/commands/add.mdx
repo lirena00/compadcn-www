@@ -12,15 +12,17 @@ Type to search, use **↑ / ↓** to move, **Tab** to select, and **Enter** to r
 ## Name components directly
 
 ```npm
-npx shadcn-plus@latest add button @company/user-menu
+npx shadcn-plus@latest add button @blobz/avatar-chip
 ```
 
 Bare names use your app's `@shadcn` source. Qualified names use the matching configured registry.
 
+For Blobz, read the current [built-in registry override limitation](/documentation/registries#built-in-registry-overrides).
+
 | Option | Purpose |
 | --- | --- |
 | `--cwd ./apps/web` | Install into one application package. |
-| `--registry @company` | Filter the picker by namespace. |
+| `--registry @blobz` | Filter the picker by namespace. |
 | `--type block` / `--query dialog` | Narrow picker choices. |
 | `--overwrite` | Allow replacement of existing files. |
 | `--yes` | Accept an explicit selection without a prompt. |
@@ -34,5 +36,9 @@ npx shadcn-plus@latest add button --yes --json
 <Callout type="warn" title="Installation can change your project">
 The upstream shadcn installer can modify dependencies and shared configuration. Add verifies selected destination files exist; it does not provide rollback. Back up local changes first.
 </Callout>
+
+## Example output
+
+<TerminalOutput id="add" />
 
 Next: [audit local usage](/documentation/commands/audit).

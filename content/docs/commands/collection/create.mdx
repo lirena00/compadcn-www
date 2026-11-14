@@ -4,7 +4,7 @@ description: Save a new, shareable list of component addresses.
 ---
 
 ```npm
-npx shadcn-plus@latest collection create collections/dashboard.json button @company/chart --name "Dashboard"
+npx shadcn-plus@latest collection create collections/dashboard.json button @blobz/avatar-profile --name "Dashboard"
 ```
 
 Bare names become `@shadcn/name`. Creation does not scan a project or contact registries. It writes the named new file and missing parent directories, without overwriting existing files.
@@ -13,10 +13,14 @@ Bare names become `@shadcn/name`. Creation does not scan a project or contact re
 {
   "collectionVersion": 1,
   "name": "Dashboard",
-  "items": ["@shadcn/button", "@company/chart"]
+  "items": ["@shadcn/button", "@blobz/avatar-profile"]
 }
 ```
 
 Use `--description <text>` for intent. Repeated `--from <collection.json>` copies and deduplicates addresses from other collections; it does not create live inheritance.
 
 Commit the JSON file to share it. Next: [show](/documentation/commands/collection/show) or [install](/documentation/commands/collection/install) the collection.
+
+## Example output
+
+<TerminalOutput id="collection-create" />

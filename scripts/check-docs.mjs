@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readdir, readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 
 const root = new URL('../content/docs/', import.meta.url);
 const files = [];
@@ -17,6 +18,8 @@ async function scan(path = '') {
 }
 await scan();
 const pages = new Set(files.map((file) => file.replace(/\.mdx$/, '').replace(/(?:^|\/)index$/, '')));
+const captures = JSON.parse(await readFile(new URL('../content/terminal/captures.json', import.meta.url), 'utf8'));
+const usedCaptures = new Set();
 
 let links = 0;
 let commands = 0;
@@ -24,6 +27,11 @@ for (const file of files) {
   const content = await readFile(new URL(file, root), 'utf8');
   assert.match(content, /^---\r?\n[\s\S]*?^title: .+$/m, `${file}: missing title`);
   assert.match(content, /^description: .+$/m, `${file}: missing description`);
+
+  for (const [, id] of content.matchAll(/<TerminalOutput id="([^"]+)"\s*\/>/g)) {
+    assert(captures.entries[id], `${file}: missing terminal capture ${id}`);
+    usedCaptures.add(id);
+  }
 
   for (const [, language, code] of content.matchAll(/```(npm|bash|powershell)[^\n]*\n([\s\S]*?)\n```/g)) {
     if (language === 'npm') {
@@ -41,4 +49,17 @@ for (const file of files) {
   }
 }
 
-console.log(`Checked ${files.length} pages, sidebar entries, ${links} internal links, and ${commands} package-runner examples.`);
+assert.deepEqual(usedCaptures, new Set(Object.keys(captures.entries)), 'Every capture must be attached to a command page');
+for (const [id, entry] of Object.entries(captures.entries)) {
+  assert.match(entry.image, /^\/images\/terminal\/[a-z-]+\.png$/, `${id}: invalid image path`);
+  assert(entry.output && entry.command.startsWith('shadcn-plus '), `${id}: missing accessible transcript`);
+  const bytes = await readFile(new URL(`../public${entry.image}`, import.meta.url));
+  assert.equal(bytes.subarray(1, 4).toString(), 'PNG', `${id}: invalid PNG`);
+  assert.equal(bytes.toString('ascii', 12, 16), 'IHDR', `${id}: missing PNG header`);
+  assert(bytes.includes(Buffer.from('impeccable:prompt\0Source: real shadcn-plus ')), `${id}: missing embedded capture origin`);
+  assert.equal(bytes.readUInt32BE(16), entry.width, `${id}: incorrect image width`);
+  assert.equal(bytes.readUInt32BE(20), entry.height, `${id}: incorrect image height`);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.sha256, `${id}: capture metadata does not match image`);
+}
+
+console.log(`Checked ${files.length} pages, sidebar entries, ${links} internal links, ${commands} package-runner examples, and ${usedCaptures.size} terminal captures with transcripts and matching image checksums.`);

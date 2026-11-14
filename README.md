@@ -26,6 +26,22 @@ Write executable CLI examples in an `npm` code fence, starting with `npx shadcn-
 
 The source adapter is `src/lib/source.ts`; `/api/search` indexes its pages. The documentation layout loads its provider and styles. `.source` is generated and must not be committed.
 
+## Terminal output images
+
+Command pages use real captured output, rendered by [Charm Freeze](https://github.com/charmbracelet/freeze) and rasterized at 3× with `@resvg/resvg-js`. Fumadocs ImageZoom handles enlargement; each image has a complete accessible text transcript.
+
+Install Freeze **0.2.2** from its official releases, build the sibling CLI, then run:
+
+```bash
+pnpm docs:screenshots
+```
+
+Set `FREEZE_BIN` when Freeze is outside PATH and `SHADCN_PLUS_CLI` when the built CLI is not at `../compadcn/dist/cli.js`. The generator creates an isolated temporary React/Vite project, installs its dependencies, and runs real commands against the live Blobz registry. It never invokes the unrelated public `shadcn-plus` npm package or mutates a user's application. The temporary project and raw output remain available for inspection.
+
+The fixture exposes only the real official Button manifest through an explicitly constrained local catalog. This avoids claiming coverage of incompatible targets elsewhere in the full official catalog. Real Blobz files are seeded from their manifests; add/collection-install screenshots show already-present files being skipped, because the current upstream installer rejects built-in namespace overrides. Capture assertions require complete analysis, reviewed cleanup, a real Vite build, and successful recovery before assets are accepted.
+
+`content/terminal/captures.json` records commands, complete normalized output, exit codes, tool/renderer versions, manifest provenance, image dimensions, and checksums. Images live in `public/images/terminal/` and embed their capture origin. Absolute demo paths are shortened; counts and generated IDs are not invented. Long reports have clearly labeled image excerpts and complete transcripts. Regeneration requires registry/network availability and may differ when upstream manifests change.
+
 ## Validate
 
 ```bash
